@@ -34,3 +34,17 @@ addons:
 
 script:
   - test/run-test.sh
+
+jobs:
+  include:
+    - stage: broadcast_sucess
+      script:
+        - wget https://raw.githubusercontent.com/k3rn31p4nic/travis-ci-discord-webhook/master/send.sh
+        - chmod +x send.sh
+        - ./send.sh success $WEBHOOK_URL
+      env: TEST=CODE
+
+after_failure:
+  - wget https://raw.githubusercontent.com/k3rn31p4nic/travis-ci-discord-webhook/master/send.sh
+  - chmod +x send.sh
+  - ./send.sh failure $WEBHOOK_URL
