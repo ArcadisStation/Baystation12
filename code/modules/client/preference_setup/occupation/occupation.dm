@@ -68,21 +68,10 @@
 		return
 
 	var/datum/species/S = preference_species()
-	var/datum/mil_branch/player_branch = null
-	var/datum/mil_rank/player_rank = null
 
 	. = list()
 	. += "<tt><center>"
 	. += "<b>Choose occupation chances</b><br>Unavailable occupations are crossed out.<br>"
-	if(GLOB.using_map.flags & MAP_HAS_BRANCH)
-
-		player_branch = mil_branches.get_branch(pref.char_branch)
-
-		. += "Branch of Service: <a href='?src=\ref[src];char_branch=1'>[pref.char_branch]</a>	"
-	if(GLOB.using_map.flags & MAP_HAS_RANK)
-		player_rank = mil_branches.get_rank(pref.char_branch, pref.char_rank)
-
-		. += "Rank: <a href='?src=\ref[src];char_rank=1'>[pref.char_rank]</a>	"
 	. += "<br>"
 	. += "<table width='100%' cellpadding='1' cellspacing='0'><tr><td width='20%'>" // Table within a table for alignment, also allows you to easily add more columns.
 	. += "<table width='100%' cellpadding='1' cellspacing='0'>"
@@ -125,23 +114,6 @@
 		if(!job.is_species_allowed(S))
 			. += "<del>[rank]</del></td><td><b> \[SPECIES RESTRICTED]</b></td></tr>"
 			continue
-
-		if(job.allowed_branches)
-			if(!player_branch)
-				. += "<del>[rank]</del></td><td><a href='?src=\ref[src];show_branches=[rank]'><b> \[BRANCH RESTRICTED]</b></a></td></tr>"
-				continue
-			if(!is_type_in_list(player_branch, job.allowed_branches))
-				. += "<del>[rank]</del></td><td><a href='?src=\ref[src];show_branches=[rank]'><b> \[NOT FOR [player_branch.name_short]]</b></a></td></tr>"
-				continue
-
-		if(job.allowed_ranks)
-			if(!player_rank)
-				. += "<del>[rank]</del></td><td><a href='?src=\ref[src];show_ranks=[rank]'><b> \[RANK RESTRICTED]</b></a></td></tr>"
-				continue
-
-			if(!is_type_in_list(player_rank, job.allowed_ranks))
-				. += "<del>[rank]</del></td><td><a href='?src=\ref[src];show_ranks=[rank]'><b> \[NOT FOR [player_rank.name_short || player_rank.name]]</b></a></td></tr>"
-				continue
 
 		if(("Assistant" in pref.job_low) && (rank != "Assistant"))
 			. += "<font color=grey>[rank]</font></td><td></td></tr>"
