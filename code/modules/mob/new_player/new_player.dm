@@ -478,14 +478,11 @@
 		mind.original = new_character
 		new_character.char_rank = null
 		var/datum/job/job = job_master.GetJob(mind.assigned_role)
-	//	world << "try assign rank to [job] from [mind.assigned_role] to [job.allowed_branches] to [shuffle(job.allowed_branches)]"
 		rank_assign:
 			for(var/branch_name in shuffle(mil_branches.branches)) // Not my fault. The ranks were implemented by morons.
 				var/datum/mil_branch/m_branch = mil_branches.branches[branch_name]// byond war ALSO implementd by morons.
-		//		world << "try assign rank 1 [m_branch] "
 				for(var/rank_name in shuffle(m_branch.ranks))
 					var/datum/mil_rank/m_rank = m_branch.ranks[rank_name]
-		//			world << "try assign rank 2 [m_branch] [m_rank]"
 					if(is_type_in_list(m_rank, job.allowed_ranks))
 						new_character.char_branch = m_branch
 						new_character.char_rank = m_rank
