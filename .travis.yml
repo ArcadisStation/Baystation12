@@ -2,6 +2,8 @@ language: generic
 sudo: false
 dist: precise
 
+bundler_args: --retry 2
+
 env:
   global:
     BYOND_MAJOR="511"
@@ -11,11 +13,11 @@ env:
 # IF THEY ARE NOT, YOUR BUILD WILL FAIL
   matrix:
     - TEST=CODE
-    - TEST=WEB
+    - TEST=MAP MAP_PATH=away_sites_testing
     - TEST=MAP MAP_PATH=example
     - TEST=MAP MAP_PATH=torch
     - TEST=MAP MAP_PATH=overmap_example
-    - TEST=MAP MAP_PATH=away_sites_testing
+    - TEST=WEB
 
 cache:
   directories:
@@ -33,7 +35,7 @@ addons:
       - python-pip
 
 script:
-  - test/run-test.sh
+  - travis_retry test/run-test.sh
 
 jobs:
   include:
