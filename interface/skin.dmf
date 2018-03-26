@@ -183,6 +183,27 @@ macro "borghotkeymode"
 		name = "Numpad8"
 		command = "body-toggle-head"
 	elem 
+		name = "Numpad1"
+		command = "body-r-leg"
+	elem 
+		name = "Numpad2"
+		command = "body-groin"
+	elem 
+		name = "Numpad3"
+		command = "body-l-leg"
+	elem 
+		name = "Numpad4"
+		command = "body-r-arm"
+	elem 
+		name = "Numpad5"
+		command = "body-chest"
+	elem 
+		name = "Numpad6"
+		command = "body-l-arm"
+	elem 
+		name = "Numpad8"
+		command = "body-toggle-head"
+	elem 
 		name = "F1"
 		command = "adminhelp"
 	elem 
@@ -205,7 +226,7 @@ macro "borghotkeymode"
 		command = ".me"
 	elem 
 		name = "F5"
-		command = "asay"
+		command = "msay"
 	elem 
 		name = "F6"
 		command = "Player-Panel-New"
@@ -372,7 +393,7 @@ macro "macro"
 		command = ".me"
 	elem 
 		name = "F5"
-		command = "asay"
+		command = "msay"
 	elem 
 		name = "F6"
 		command = "Player-Panel-New"
@@ -599,7 +620,9 @@ macro "hotkeymode"
 		command = ".me"
 	elem 
 		name = "F5"
-		command = "asay"
+		command = "msay"
+	elem 
+		name = "F5+REP"
 	elem 
 		name = "F6"
 		command = "Player-Panel-New"
@@ -769,7 +792,7 @@ macro "borgmacro"
 		command = ".me"
 	elem 
 		name = "F5"
-		command = "asay"
+		command = "msay"
 	elem 
 		name = "F6"
 		command = "Player-Panel-New"
