@@ -2,6 +2,8 @@ language: generic
 sudo: false
 dist: precise
 
+bundler_args: --retry 2
+
 env:
   global:
     BYOND_MAJOR="511"
@@ -33,7 +35,7 @@ addons:
       - python-pip
 
 script:
-  - test/run-test.sh
+  - travis_retry test/run-test.sh
 
 jobs:
   include:
