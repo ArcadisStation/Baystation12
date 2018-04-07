@@ -13,7 +13,6 @@ env:
 # IF THEY ARE NOT, YOUR BUILD WILL FAIL
   matrix:
     - TEST=CODE
-    - TEST=MAP MAP_PATH=away_sites_testing
     - TEST=MAP MAP_PATH=example
     - TEST=MAP MAP_PATH=torch
     - TEST=MAP MAP_PATH=overmap_example
